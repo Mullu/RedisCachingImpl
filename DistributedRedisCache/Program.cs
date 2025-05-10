@@ -34,7 +34,7 @@ app.MapGet("/", async context =>
         Console.WriteLine("Cache Miss: Generating new data...");
         string productData = "Product1, Product2, Product3";
 
-        await cacheService.SetCacheAsync(cacheKey, productData, TimeSpan.FromMinutes(5));
+        await cacheService.SetCacheAsync(cacheKey, productData, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(2));
         Console.WriteLine("Data Stored in Cache: " + productData);
         await context.Response.WriteAsync($"Cache Miss: {productData} - Stored in Cache");
     }

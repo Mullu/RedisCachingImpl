@@ -11,12 +11,17 @@ public class CacheService
 		_cache = cache;
 	}
 
-	public async Task SetCacheAsync(string key, string value, TimeSpan expiration)
+	public async Task SetCacheAsync(
+		string key,
+		string value,
+		TimeSpan absoluteExpiration,
+		TimeSpan slidingExpiration)
 	{
 		var options = new DistributedCacheEntryOptions
 		{
-			AbsoluteExpirationRelativeToNow = expiration
-		};
+			AbsoluteExpirationRelativeToNow = absoluteExpiration,
+			SlidingExpiration = slidingExpiration,
+        };
 
 		await _cache.SetStringAsync(key, value, options);
 	}
