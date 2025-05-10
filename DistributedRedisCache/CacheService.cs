@@ -20,8 +20,8 @@ public class CacheService
 		var options = new DistributedCacheEntryOptions
 		{
 			AbsoluteExpirationRelativeToNow = absoluteExpiration,
-			SlidingExpiration = slidingExpiration,
-        };
+			SlidingExpiration = slidingExpiration
+		};
 
 		await _cache.SetStringAsync(key, value, options);
 	}
