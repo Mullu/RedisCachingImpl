@@ -30,4 +30,10 @@ public class CacheService
 	{
 		return await _cache.GetStringAsync(key);
 	}
+
+	public async Task InvalidateCacheAsync(string key)
+	{
+		await _cache.RemoveAsync(key);
+		Console.WriteLine($"Cache entry {key} has been invalidated");
+	}
 }
